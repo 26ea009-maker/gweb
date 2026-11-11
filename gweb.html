@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gram Panchayat Website</title>
+
+<style>
+/* INTERNAL CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7f3;
+    color: #26352c;
+}
+
+header {
+    background: #176b4b;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h2 {
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a, nav button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #c8f0d5;
+}
+
+.hero {
+    background: linear-gradient(120deg, #145638, #39966a);
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+button, .btn {
+    background: #176b4b;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hero button {
+    background: white;
+    color: #176b4b;
+    font-weight: bold;
+}
+
+button:hover, .btn:hover {
+    background: #10452f;
+    color: white;
+}
+
+section {
+    padding: 45px 7%;
+}
+
+h2.section-title {
+    text-align: center;
+    color: #176b4b;
+    margin-bottom: 25px;
+}
+
+.about {
+    text-align: center;
+    line-height: 1.8;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 9px;
+    box-shadow: 0 2px 10px #00000012;
+}
+
+.card h3 {
+    color: #176b4b;
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 9px;
+    max-width: 650px;
+    margin: auto;
+    box-shadow: 0 2px 10px #00000012;
+}
+
+form h3 {
+    color: #176b4b;
+    margin-bottom: 18px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.notice {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #176b4b;
+    border-radius: 5px;
+}
+
+#dashboard {
+    background: #eaf2ec;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    background: #176b4b;
+    color: white;
+}
+
+footer {
+    background: #123d2b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.message {
+    color: #176b4b;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.danger {
+    background: #b83232;
+}
+
+.small-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+@media(max-width: 650px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>Gram Panchayat Portal</h2>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#schemes">Schemes</a>
+        <a href="#services">Services</a>
+        <a href="#complaints">Complaints</a>
+        <a href="#notices">Announcements</a>
+        <button onclick="showLogin()">Login / Register</button>
+        <button onclick="showDashboard()">Admin</button>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <h1>Welcome to Gram Panchayat</h1>
+    <p>Digital services for a better and developed village.</p>
+    <button onclick="showLogin()">Get Started</button>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+    <h2 class="section-title">About Us</h2>
+    <p>
+        The Gram Panchayat Website provides an online platform for village
+        residents to access Panchayat services. Citizens can register,
+        submit complaints, apply for services and view government schemes.
+        This website helps improve transparency and saves time.
+    </p>
+</section>
+
+<!-- SCHEMES -->
+<section id="schemes">
+    <h2 class="section-title">Government Schemes</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Housing Support</h3>
+            <p>Information about housing assistance and eligibility.</p>
+        </div>
+
+        <div class="card">
+            <h3>Village Development</h3>
+            <p>Information about village infrastructure development.</p>
+        </div>
+
+        <div class="card">
+            <h3>Sanitation Scheme</h3>
+            <p>Information about cleanliness and sanitation activities.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2 class="section-title">Panchayat Services</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Certificate Request</h3>
+            <p>Apply for available Panchayat certificates.</p>
+            <button onclick="setService('Certificate Request')">
+                Apply Now
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Water Supply</h3>
+            <p>Submit water supply-related requests.</p>
+            <button onclick="setService('Water Supply')">
+                Request Service
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Road Maintenance</h3>
+            <p>Report road maintenance issues.</p>
+            <button onclick="setService('Road Maintenance')">
+                Request Service
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- COMPLAINT REGISTRATION -->
+<section id="complaints">
+    <h2 class="section-title">Complaint Registration</h2>
+
+    <form id="complaintForm">
+        <h3>Submit Your Complaint</h3>
+
+        <label>Category</label>
+        <select id="complaintCategory" required>
+            <option value="">Select Category</option>
+            <option>Roads</option>
+            <option>Water Supply</option>
+            <option>Drainage</option>
+            <option>Street Lights</option>
+            <option>Sanitation</option>
+            <option>Other</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" id="complaintLocation"
+               placeholder="Enter village or street" required>
+
+        <label>Description</label>
+        <textarea id="complaintDescription"
+                  rows="4" required></textarea>
+
+        <label>Supporting Image (Optional)</label>
+        <input type="file" id="complaintImage" accept="image/*">
+
+        <button type="submit">Submit Complaint</button>
+
+        <p id="complaintMessage" class="message"></p>
+    </form>
+</section>
+
+<!-- SERVICE REQUEST -->
+<section id="serviceRequest">
+    <h2 class="section-title">Online Service Request</h2>
+
+    <form id="serviceForm">
+        <h3>Apply for Panchayat Service</h3>
+
+        <label>Service Type</label>
+        <select id="serviceType" required>
+            <option value="">Select Service</option>
+            <option>Birth Certificate</option>
+            <option>Death Certificate</option>
+            <option>Residence Certificate</option>
+            <option>Certificate Request</option>
+            <option>Other Panchayat Service</option>
+        </select>
+
+        <label>Additional Details</label>
+        <textarea id="serviceDetails" rows="3"
+                  placeholder="Enter required details"></textarea>
+
+        <button type="submit">Submit Application</button>
+        <p id="serviceMessage" class="message"></p>
+    </form>
+</section>
+
+<!-- TRACK STATUS -->
+<section id="track">
+    <h2 class="section-title">Track Complaint / Application</h2>
+
+    <form id="trackForm">
+        <h3>Check Request Status</h3>
+
+        <label>Enter Reference Number</label>
+        <input type="text" id="trackId"
+               placeholder="Example: GP-123456" required>
+
+        <button type="submit">Track Status</button>
+
+        <p id="trackResult" class="message"></p>
+    </form>
+</section>
+
+<!-- ANNOUNCEMENTS -->
+<section id="notices">
+    <h2 class="section-title">Village Announcements</h2>
+    <div id="noticeList"></div>
+</section>
+
+<!-- LOGIN AND REGISTRATION -->
+<section id="authSection" class="hidden">
+    <h2 class="section-title">Citizen Login / Registration</h2>
+
+    <form id="registerForm">
+        <h3>New Citizen Registration</h3>
+
+        <label>Full Name</label>
+        <input type="text" id="regName" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" id="regMobile"
+               pattern="[0-9]{10}" maxlength="10" required>
+
+        <label>Email</label>
+        <input type="email" id="regEmail" required>
+
+        <label>Password</label>
+        <input type="password" id="regPassword"
+               minlength="6" required>
+
+        <button type="submit">Register</button>
+        <p id="registerMessage" class="message"></p>
+    </form>
+
+    <br>
+
+    <form id="loginForm">
+        <h3>Citizen / Admin Login</h3>
+
+        <label>Email</label>
+        <input type="email" id="loginEmail" required>
+
+        <label>Password</label>
+        <input type="password" id="loginPassword" required>
+
+        <button type="submit">Login</button>
+        <p id="loginMessage" class="message"></p>
+
+        <p style="margin-top:15px;font-size:13px;">
+            Demo Admin: admin@gram.com<br>
+            Password: admin123
+        </p>
+    </form>
+</section>
+
+<!-- ADMIN DASHBOARD -->
+<section id="dashboard" class="hidden">
+    <h2 class="section-title">Admin Dashboard</h2>
+
+    <button onclick="logout()" class="danger">Logout</button>
+
+    <h3 style="margin-top:25px;">Registered Citizens</h3>
+    <div id="citizenTable"></div>
+
+    <h3 style="margin-top:30px;">Manage Complaints</h3>
+    <div id="complaintTable"></div>
+
+    <h3 style="margin-top:30px;">Manage Applications</h3>
+    <div id="applicationTable"></div>
+
+    <form id="announcementForm" style="margin-top:30px;">
+        <h3>Publish Announcement</h3>
+
+        <label>Announcement Title</label>
+        <input type="text" id="announcementTitle" required>
+
+        <label>Announcement Details</label>
+        <textarea id="announcementText" rows="3" required></textarea>
+
+        <button type="submit">Publish</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Gram Panchayat Website</p>
+    <p>Digital Village Administration and Public Services</p>
+</footer>
+
+<script>
+// INTERNAL JAVASCRIPT
+
+const getData = key =>
+    JSON.parse(localStorage.getItem(key) || "[]");
+
+const saveData = (key, data) =>
+    localStorage.setItem(key, JSON.stringify(data));
+
+let currentUser = null;
+
+// Demo administrator account
+if (!localStorage.getItem("gpUsers")) {
+    saveData("gpUsers", [{
+        name: "Administrator",
+        mobile: "9000000000",
+        email: "admin@gram.com",
+        password: "admin123",
+        role: "admin"
+    }]);
+}
+
+// Initialize data
+if (!localStorage.getItem("gpComplaints"))
+    saveData("gpComplaints", []);
+
+if (!localStorage.getItem("gpApplications"))
+    saveData("gpApplications", []);
+
+if (!localStorage.getItem("gpNotices"))
+    saveData("gpNotices", []);
+
+
+// SHOW LOGIN SECTION
+function showLogin() {
+    document.getElementById("authSection")
+        .classList.remove("hidden");
+
+    document.getElementById("authSection")
+        .scrollIntoView({ behavior: "smooth" });
+}
+
+
+// SHOW ADMIN DASHBOARD
+function showDashboard() {
+    if (!currentUser || currentUser.role !== "admin") {
+        showLogin();
+        alert("Please login as administrator.");
+        return;
+    }
+
+    document.getElementById("dashboard")
+        .classList.remove("hidden");
+
+    displayCitizens();
+    displayComplaints();
+    displayApplications();
+
+    document.getElementById("dashboard")
+        .scrollIntoView({ behavior: "smooth" });
+}
+
+
+// CITIZEN REGISTRATION
+document.getElementById("registerForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const users = getData("gpUsers");
+
+    const email = document.getElementById("regEmail")
+        .value.trim().toLowerCase();
+
+    if (users.some(user => user.email === email)) {
+        document.getElementById("registerMessage")
+            .textContent = "Email already registered.";
+        return;
+    }
+
+    const user = {
+        name: document.getElementById("regName").value,
+        mobile: document.getElementById("regMobile").value,
+        email: email,
+        password: document.getElementById("regPassword").value,
+        role: "citizen"
+    };
+
+    users.push(user);
+    saveData("gpUsers", users);
+
+    document.getElementById("registerMessage")
+        .textContent = "Registration successful. Please login.";
+
+    this.reset();
+});
+
+
+// LOGIN
+document.getElementById("loginForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail")
+        .value.trim().toLowerCase();
+
+    const password = document.getElementById("loginPassword").value;
+
+    const users = getData("gpUsers");
+
+    const user = users.find(u =>
+        u.email === email && u.password === password
+    );
+
+    if (!user) {
+        document.getElementById("loginMessage")
+            .textContent = "Invalid email or password.";
+        return;
+    }
+
+    currentUser = user;
+
+    document.getElementById("loginMessage")
+        .textContent = "Login successful!";
+
+    alert("Welcome " + user.name);
+
+    if (user.role === "admin") {
+        showDashboard();
+    }
+});
+
+
+// SERVICE CARD BUTTON
+function setService(service) {
+    document.getElementById("serviceType").value =
+        service === "Certificate Request"
+        ? "Certificate Request"
+        : "Other Panchayat Service";
+
+    document.getElementById("serviceDetails").value =
+        "Request related to " + service;
+
+    document.getElementById("serviceRequest")
+        .scrollIntoView({ behavior: "smooth" });
+}
+
+
+// COMPLAINT REGISTRATION
+document.getElementById("complaintForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!currentUser || currentUser.role !== "citizen") {
+        alert("Please register and login as a citizen first.");
+        showLogin();
+        return;
+    }
+
+    const complaints = getData("gpComplaints");
+
+    const reference = "GP-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+    const imageFile =
+        document.getElementById("complaintImage").files[0];
+
+    const complaint = {
+        id: reference,
+        citizen: currentUser.name,
+        email: currentUser.email,
+        category: document.getElementById("complaintCategory").value,
+        location: document.getElementById("complaintLocation").value,
+        description: document.getElementById("complaintDescription").value,
+        imageName: imageFile ? imageFile.name : "",
+        status: "Submitted"
+    };
+
+    complaints.push(complaint);
+    saveData("gpComplaints", complaints);
+
+    document.getElementById("complaintMessage")
+        .textContent =
+        "Complaint submitted! Your reference number is " + reference;
+
+    this.reset();
+});
+
+
+// SERVICE APPLICATION
+document.getElementById("serviceForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!currentUser || currentUser.role !== "citizen") {
+        alert("Please login as a citizen first.");
+        showLogin();
+        return;
+    }
+
+    const applications = getData("gpApplications");
+
+    const reference = "APP-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+    applications.push({
+        id: reference,
+        citizen: currentUser.name,
+        email: currentUser.email,
+        service: document.getElementById("serviceType").value,
+        details: document.getElementById("serviceDetails").value,
+        status: "Submitted"
+    });
+
+    saveData("gpApplications", applications);
+
+    document.getElementById("serviceMessage")
+        .textContent =
+        "Application submitted. Reference number: " + reference;
+
+    this.reset();
+});
+
+
+// TRACK COMPLAINT OR APPLICATION
+document.getElementById("trackForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const id = document.getElementById("trackId")
+        .value.trim().toUpperCase();
+
+    const complaints = getData("gpComplaints");
+    const applications = getData("gpApplications");
+
+    const item = complaints.find(x => x.id === id) ||
+                 applications.find(x => x.id === id);
+
+    const result = document.getElementById("trackResult");
+
+    if (item) {
+        result.textContent =
+            "Reference: " + item.id +
+            " | Status: " + item.status;
+    } else {
+        result.textContent = "No request found. Check your reference number.";
+    }
+});
+
+
+// DISPLAY CITIZENS
+function displayCitizens() {
+
+    const users = getData("gpUsers");
+
+    let html = `<table>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>`;
+
+    users.forEach(user => {
+        html += `<tr>
+            <td>${user.name}</td>
+            <td>${user.mobile}</td>
+            <td>${user.email}</td>
+            <td>${user.role}</td>
+        </tr>`;
+    });
+
+    html += "</table>";
+
+    document.getElementById("citizenTable").innerHTML = html;
+}
+
+
+// DISPLAY COMPLAINTS
+function displayComplaints() {
+
+    const complaints = getData("gpComplaints");
+
+    let html = `<table>
+        <tr>
+            <th>Reference</th>
+            <th>Citizen</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>`;
+
+    complaints.forEach((c, index) => {
+        html += `<tr>
+            <td>${c.id}</td>
+            <td>${c.citizen}</td>
+            <td>${c.category}</td>
+            <td>${c.location}</td>
+            <td>${c.description}</td>
+            <td>
+                <select onchange="updateComplaint(${index}, this.value)">
+                    ${["Submitted", "Under Review", "In Progress",
+                       "Resolved", "Rejected"].map(status =>
+                        `<option ${c.status === status ? "selected" : ""}>
+                            ${status}
+                        </option>`
+                    ).join("")}
+                </select>
+            </td>
+        </tr>`;
+    });
+
+    html += "</table>";
+
+    document.getElementById("complaintTable").innerHTML = html;
+}
+
+
+// UPDATE COMPLAINT STATUS
+function updateComplaint(index, status) {
+
+    const complaints = getData("gpComplaints");
+
+    complaints[index].status = status;
+
+    saveData("gpComplaints", complaints);
+
+    displayComplaints();
+    alert("Complaint status updated.");
+}
+
+
+// DISPLAY APPLICATIONS
+function displayApplications() {
+
+    const applications = getData("gpApplications");
+
+    let html = `<table>
+        <tr>
+            <th>Reference</th>
+            <th>Citizen</th>
+            <th>Service</th>
+            <th>Details</th>
+            <th>Status</th>
+        </tr>`;
+
+    applications.forEach((app, index) => {
+        html += `<tr>
+            <td>${app.id}</td>
+            <td>${app.citizen}</td>
+            <td>${app.service}</td>
+            <td>${app.details}</td>
+            <td>
+                <select onchange="updateApplication(${index}, this.value)">
+                    ${["Submitted", "Under Review", "Approved",
+                       "Completed", "Rejected"].map(status =>
+                        `<option ${app.status === status ? "selected" : ""}>
+                            ${status}
+                        </option>`
+                    ).join("")}
+                </select>
+            </td>
+        </tr>`;
+    });
+
+    html += "</table>";
+
+    document.getElementById("applicationTable").innerHTML = html;
+}
+
+
+// UPDATE APPLICATION STATUS
+function updateApplication(index, status) {
+
+    const applications = getData("gpApplications");
+
+    applications[index].status = status;
+
+    saveData("gpApplications", applications);
+
+    displayApplications();
+    alert("Application status updated.");
+}
+
+
+// PUBLISH ANNOUNCEMENT
+document.getElementById("announcementForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!currentUser || currentUser.role !== "admin") {
+        alert("Only the administrator can publish announcements.");
+        return;
+    }
+
+    const notices = getData("gpNotices");
+
+    notices.push({
+        title: document.getElementById("announcementTitle").value,
+        text: document.getElementById("announcementText").value,
+        date: new Date().toLocaleDateString()
+    });
+
+    saveData("gpNotices", notices);
+
+    this.reset();
+
+    displayAnnouncements();
+
+    alert("Announcement published successfully.");
+});
+
+
+// DISPLAY ANNOUNCEMENTS
+function displayAnnouncements() {
+
+    const notices = getData("gpNotices");
+
+    let html = "";
+
+    notices.forEach(notice => {
+        html += `<div class="notice">
+            <h3>${notice.title}</h3>
+            <p>${notice.text}</p>
+            <small>${notice.date}</small>
+        </div>`;
+    });
+
+    if (notices.length === 0) {
+        html = "<p>No announcements available.</p>";
+    }
+
+    document.getElementById("noticeList").innerHTML = html;
+}
+
+
+// LOGOUT
+function logout() {
+    currentUser = null;
+
+    document.getElementById("dashboard")
+        .classList.add("hidden");
+
+    alert("Logged out successfully.");
+}
+
+
+// INITIAL DISPLAY
+displayAnnouncements();
+
+</script>
+
+</body>
+</html>
